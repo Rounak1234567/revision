@@ -8,7 +8,7 @@
 </head>
 <body>
     <button id="throttle">Click Me</button>
-    <input type="text" id="debounce" onkeyup="debounce(expensive,1000)">
+    <input type="text" id="debounce" onkeyup="better()">
 </body>
 
 
@@ -41,7 +41,7 @@
         }
     }
 
-    //button.addEventListener('onkeyup', debounce(expensive, 1000));
+    const better = debounce(expensive,1000)
 
 
 </script>
