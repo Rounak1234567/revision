@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="throttle">Click Me</button>
+    <input type="text" id="debounce" onkeyup="debounce(expensive,1000)">
+</body>
+
+
+<script>
+    const btn=document.querySelector("#throttle");
+    var button = document.getElementById("debounce");
+    btn.addEventListener("click", throttleFunction(expensive, 1500));
+    function expensive(){
+        console.log("Expensive call")
+    }
+
+    function throttleFunction(fn, delay){
+        let prev = 0;
+        return ()=>{
+            let now = new Date().getTime();
+            if(now-prev > delay){
+                prev = now;
+                return fn();
+            }
+        }
+    }
+
+    function debounce(fn, delay){
+        let timer;
+        return function(){
+            clearTimeout(timer)
+            timer = setTimeout(()=>{
+                fn()
+            },delay)
+        }
+    }
+
+    //button.addEventListener('onkeyup', debounce(expensive, 1000));
+
+
+</script>
+
+</html>
